@@ -42,29 +42,7 @@ namespace Netcode.Transports.Facepunch
 
         private void Awake()
         {
-            try
-            {
-                SteamClient.Init(steamAppId, false);
-            }
-            catch (Exception e)
-            {
-                if (LogLevel <= LogLevel.Error)
-                    Debug.LogError($"[{nameof(FacepunchTransport)}] - Caught an exeption during initialization of Steam client: {e}");
-            }
-            finally
-            {
-                StartCoroutine(InitSteamworks());
-            }
-        }
-
-        private void Update()
-        {
-            SteamClient.RunCallbacks();
-        }
-
-        private void OnDestroy()
-        {
-            SteamClient.Shutdown();
+            StartCoroutine(InitSteamworks());
         }
 
         #endregion
